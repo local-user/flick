@@ -30,13 +30,21 @@
         <style>
             .animate-loading {
                 animation-name:         loading;
-                animation-duration:     20s;
+                animation-duration:     <?php echo $args['delay']; ?>s;
                 animation-fill-mode:    forwards;
             }
         </style>
 
         <!-- font (google) -->
         <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+
+
+        <!-- script - delay -->
+        <script>
+
+            var delay = <?php echo $args['delay']; ?>;
+
+        </script>
 
         <!-- title -->
         <title>flick</title>
@@ -52,6 +60,9 @@
                 <div id='title'>
                     <h1>Redirecting...</h1>
                 </div>
+                <div id='delay'>
+                    <h1><span id='countdown'><?php echo $args['delay']; ?></span>s</h1>
+                </div>
             </div>
 
             <!-- bar -->
@@ -64,9 +75,6 @@
             <div id='bottom'>
                 <div id='url'>
                     <h1><?php echo $args['url']; ?></h1>
-                </div>
-                <div id='delay'>
-                    <h1><?php echo $args['delay']; ?></h1>
                 </div>
             </div>
 

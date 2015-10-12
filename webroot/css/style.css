@@ -2,10 +2,10 @@
 
     /** global(s) **/
     html, body {
-        height: 100%;
-        width:  100%;
-        font-family: 'Orbitron', sans-serif;
-        background-color: white;
+        height:             100%;
+        width:              100%;
+        font-family:        'Orbitron', sans-serif;
+        background-color:    white;
     }
 
 
@@ -31,6 +31,11 @@
 
             #loading #top #title {
                 display:            inline-block;
+            }
+
+            #loading #top #delay {
+                display:            inline-block;
+                float:              right;
             }
 
             #loading #bar {
@@ -61,11 +66,6 @@
             #loading #bottom #url {
                 display:            inline-block;
                 float:              left;
-            }
-
-            #loading #bottom #delay {
-                display:            inline-block;
-                float:              right;
             }
 
         /** loading -- state -- load -- end **/
