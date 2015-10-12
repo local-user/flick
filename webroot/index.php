@@ -38,6 +38,8 @@
         <!-- font (google) -->
         <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 
+        <!-- icon -->
+        <link rel="shortcut icon" href="icon/favicon.ico">
 
         <!-- script - delay -->
         <script>
