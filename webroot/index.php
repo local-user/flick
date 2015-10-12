@@ -5,8 +5,8 @@
 
 
     /** require 'lib/' **/
-    require_once('lib/class-argument.php');
-    require_once('lib/class-exception.php');
+    require_once('../php/class-argument.php');
+    require_once('../php/class-exception.php');
 
     /** args **/ $arg = new argument();
     $args      = $arg->get_arguments();
