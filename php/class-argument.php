@@ -6,8 +6,8 @@ class flick {}
 class argument extends flick {
 
 
-    private $delay  = 3;
-    private $url    = 'http://www.example.com/';
+    private $delay = 5;
+    private $url   = 'http://www.example.com/';
 
 
     #
