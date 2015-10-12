@@ -49,7 +49,7 @@
         </script>
 
         <!-- title -->
-        <title>flick</title>
+        <title>Flick</title>
 
     </head>
     <body>
