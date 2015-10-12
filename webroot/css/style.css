@@ -1,100 +1,114 @@
 
 
     /** global(s) **/
-    html, body { height: 100%; width: 100%; font-family: 'Orbitron', sans-serif;}
-
-    /** container **/
-    #container { height: 100%; width: 100%; background-color: whitesmoke; }
-
-    /** container -- crust **/
-    #container #crust {
-        background-color: black;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        height: 200px;
-        width:  200px;
-        margin-top: -100px;
-        margin-left: -100px;
-        border-radius: 50%;
-        border: 4px solid black;
-        transition: 2s;
-        overflow: hidden;
-    }
-    #container #crust:hover {
-        border-radius: 0;
-        width:  100px;
-        height: 400px;
-        margin-left: -110px;
-        margin-top: -200px;
-    }
-
-    /** container -- crust -- label **/
-    #container #crust #label {
-        background-color: #2196F3;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        height: 100px;
-        width:  300px;
-        margin-top: 0px;
-        margin-left: -150px;
-        border-radius: 0;
-        border: 4px solid black;
-        transition: 1s;
-        overflow: hidden;
-        text-align: center;
-    }
-    #container #crust #label:hover {
-        border-radius: 0;
-        border: 4px solid black;
-        width:  500px;
-        margin-left: -250px;
-    }
-    #container #crust #label h2 {
-        margin: 70px auto;
-        font-size: 10px;
-    }
-
-    /** container -- crust -- core **/
-    #container #crust #core {
+    html, body {
+        height: 100%;
+        width:  100%;
+        font-family: 'Orbitron', sans-serif;
         background-color: white;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        height: 100px;
-        width:  300px;
-        margin-top: -50px;
-        margin-left: -150px;
-        border-radius: 0;
-        border: 4px solid black;
-        transition: 1s;
-        overflow: hidden;
-        text-align: center;
-        font-size: 12px;
     }
-    #container #crust #core:hover {
-        border-radius: 0;
-        border: 4px solid black;
-        width:  500px;
-        margin-left: -250px;
-    }
-    #container #crust #core h1 {
-        margin: 45px auto;
-    }
+
+
+    /** loading -- start **/
+
+        /** loading -- state -- load **/
+
+            #loading {
+                position:           fixed;
+                top:                50%;
+                transform:          translate(0, -50%);
+                width:              100%;
+                transition:         3s;
+            }
+
+            #loading #top {
+                margin:             0 auto;
+                font-size:          12px;
+                width:              350px;
+                padding:            10px;
+                transition:         4s;
+            }
+
+            #loading #top #title {
+                display:            inline-block;
+            }
+
+            #loading #bar {
+                margin:             auto;
+                background-color:   #222;
+                height:             3px;
+                width:              100%;
+                background-color:   white;
+                border:             1px solid;
+                transition:         2s;
+            }
+
+            #loading #bar #percent {
+                height:             3px;
+                width:              100%;
+                background-color:   black;
+                transition:         2s;
+            }
+
+            #loading #bottom {
+                padding:            10px;
+                margin:             0 auto;
+                font-size:          12px;
+                width:              350px;
+                transition:         4s;
+            }
+
+            #loading #bottom #url {
+                display:            inline-block;
+                float:              left;
+            }
+
+            #loading #bottom #delay {
+                display:            inline-block;
+                float:              right;
+            }
+
+        /** loading -- state -- load -- end **/
+
+        /** loading -- state -- hover **/
+
+            #loading:hover #top {
+                width:              60%;
+            }
+
+            #loading:hover #bar {
+                background-color:   white;
+                width:              60%;
+                height:             40px;
+            }
+
+            #loading:hover #bar #percent {
+                margin:             1%;
+                height:             30px;
+            }
+
+            #loading:hover #bottom {
+                width:              60%;
+            }
+
+        /** loading -- state -- hover -- end **/
+
+    /** loading -- end **/
 
 
     /** animation -- loading **/
     @keyframes loading {
-        from    {
-                    background-color: black;
+        0%      {
+                    width:      0%;
+                    background: red;
                 }
-        to      {
-                    background-color: #4CAF50;
+        50%     {
+                    background: yellow;
+                }
+        100%    {
+                    width:      100%;
+                    background: green;
                 }
     }
-
-
-
 
 

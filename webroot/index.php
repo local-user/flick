@@ -29,8 +29,9 @@
         <!-- css -->
         <style>
             .animate-loading {
-                animation-name: loading;
-                animation-duration: <?php echo $args['delay']; ?>s;
+                animation-name:         loading;
+                animation-duration:     20s;
+                animation-fill-mode:    forwards;
             }
         </style>
 
@@ -42,16 +43,39 @@
 
     </head>
     <body>
-        <div id="container">
-            <div id="crust" class="animate-loading">
-                <div id="label">
-                    <h2><?php echo "Redirecting in {$args['delay']} seconds..."; ?></h2>
-                </div>
-                <div id="core">
-                    <h1><?php echo $args['url']; ?></h1>
+
+        <!-- loading -->
+        <div id="loading">
+
+            <!-- top -->
+            <div id='top'>
+                <div id='title'>
+                    <h1>Redirecting...</h1>
                 </div>
             </div>
+
+            <!-- bar -->
+            <div id='bar'>
+                <div id='percent' class='animate-loading'>
+                </div>
+            </div>
+
+            <!-- bottom -->
+            <div id='bottom'>
+                <div id='url'>
+                    <h1><?php echo $args['url']; ?></h1>
+                </div>
+                <div id='delay'>
+                    <h1><?php echo $args['delay']; ?></h1>
+                </div>
+            </div>
+
         </div>
+        <!-- loading -->
+
+        <!-- script -->
+        <script src="js/countdown.js"></script>
+
     </body>
 </html>
 <?php
