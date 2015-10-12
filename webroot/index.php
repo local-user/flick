@@ -1,35 +1,20 @@
-<?php
+<?php namespace flick;
 #
-#   Flick - Simple PHP GET Redirector
+#   [ flick/flick.php ]
 #
 
 
-    # default(s)
-    $default_delay  = 3;
-    $default_url    = 'http://www.example.com/';
+    /** require 'lib/' **/
+    require_once('lib/class-argument.php');
+    require_once('lib/class-exception.php');
 
-    # get -- delay (seconds)
-    if( isset($_GET['delay']) ){
-        $delay= $_GET['delay'];
-        if( ! is_numeric($delay) ){
-            die('error: invalid delay');
-        }
-    } else {
-        $delay = $default_delay;
+    /** args **/ $arg = new argument();
+    $args      = $arg->get_arguments();
+
+    /** redirect **/
+    if( $args['delay'] > 0 ){
+        header( "refresh:{$args['delay']};url={$args['url']}" );
     }
-
-    # get -- url
-    if( isset($_GET['url']) ){
-        $url = $_GET['url'];
-        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
-            die('error: invalid url');
-        }
-    } else {
-        $url = $default_url;
-    }
-
-    # redirect
-    header( "refresh:$delay;url=$url" );
 
 
 ?>
@@ -37,30 +22,33 @@
 <html>
     <head>
 
-        <!-- CSS -->
+        <!-- css -->
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-        <!-- Google - Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-
-        <!-- CSS -->
+        <!-- css -->
         <style>
             .animate-loading {
                 animation-name: loading;
-                animation-duration: <?php echo $delay; ?>s;
+                animation-duration: <?php echo $args['delay']; ?>s;
             }
         </style>
+
+        <!-- font (google) -->
+        <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+
+        <!-- title -->
+        <title>flick</title>
 
     </head>
     <body>
         <div id="container">
             <div id="crust" class="animate-loading">
                 <div id="label">
-                    <h2><?php echo "Redirecting in $delay seconds..."; ?></h2>
+                    <h2><?php echo "Redirecting in {$args['delay']} seconds..."; ?></h2>
                 </div>
                 <div id="core">
-                    <h1><?php echo $url; ?></h1>
+                    <h1><?php echo $args['url']; ?></h1>
                 </div>
             </div>
         </div>
@@ -68,8 +56,6 @@
 </html>
 <?php
 #
-#
 # ^(0.o)> --- pew pew
-#
 #
 ?>
