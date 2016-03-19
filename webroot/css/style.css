@@ -97,6 +97,11 @@
 
 
     /** animation -- loading **/
+    .animate-loading {
+        animation-name:         loading;
+        animation-duration:     100s;
+        animation-fill-mode:    forwards;
+    }
     @keyframes loading {
         0%      {
                     width:      0%;

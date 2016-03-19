@@ -6,27 +6,11 @@
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-        <!-- css -->
-        <style>
-            .animate-loading {
-                animation-name:         loading;
-                animation-duration:     100s;
-                animation-fill-mode:    forwards;
-            }
-        </style>
-
         <!-- font (google) -->
         <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 
         <!-- icon -->
         <link rel="shortcut icon" href="icon/favicon.ico">
-
-        <!-- script - delay -->
-        <script>
-
-            var delay = 100;
-
-        </script>
 
         <!-- title -->
         <title>Flick</title>
@@ -43,20 +27,20 @@
                     <h1>Redirecting...</h1>
                 </div>
                 <div id='delay'>
-                    <h1><span id='countdown'>100</span>s</h1>
+                    <h1><span id='countdown'></span>s</h1>
                 </div>
             </div>
 
             <!-- bar -->
             <div id='bar'>
-                <div id='percent' class='animate-loading'>
+                <div id='percent'>
                 </div>
             </div>
 
             <!-- bottom -->
             <div id='bottom'>
                 <div id='url'>
-                    <h1>URL</h1>
+                    <h1 id='urlh'></h1>
                 </div>
             </div>
 
@@ -64,7 +48,9 @@
         <!-- loading -->
 
         <!-- script -->
-        <script src="js/countdown.js"></script>
+        <script src="js/get.js"></script>
+        <script src="js/flick.js"></script>
+
 
     </body>
 </html>
