@@ -1,0 +1,111 @@
+#!/bin/bash
+#
+#   vagrant - script - provision
+#
+
+
+
+
+    # export - noninteractive
+    export DEBIAN_FRONTEND=noninteractive
+
+
+    # | app
+    if [ -d '/tmp/app' ]; then
+
+        # remove existing
+        rm -r -v '/var/www'
+
+        # move
+        mv -v '/tmp/app' '/var/www'
+
+        # ownership
+        chown -R root:root '/var/www'
+                      find '/var/www' -type f -exec chmod 644 {} \;
+                      find '/var/www' -type d -exec chmod 755 {} \;
+
+    fi
+    # app |
+
+
+    # | ssh
+    if [ -d '/tmp/ssh' ]; then
+
+        # mv
+        mv -v '/tmp/ssh/'* '/root/.ssh'
+
+        # ownership
+        chown -R root:root '/root/.ssh'
+                      find '/root/.ssh' -type f -exec chmod 600 {} \;
+                      find '/root/.ssh' -type d -exec chmod 700 {} \;
+
+        # rm
+        rm -vrf '/tmp/ssh'
+
+    fi
+    # ssh |
+
+
+    # | system
+    if [ -d '/tmp/system' ]; then
+
+        # remove existing
+        [ -d '/opt/system' ] && rm -vrf '/opt/system'
+
+        # move
+        mv -v '/tmp/system' '/opt/system'
+
+    fi
+    # system |
+
+
+    # | install
+
+        # apt - update
+        aptitude update
+
+        # apt - upgrade
+#        aptitude upgrade -q -y
+
+        # apt - install - lamp / git / realpath / tree
+        aptitude install -q -y apache2 mysql-server php5-mysql php5 libapache2-mod-php5 php5-mcrypt git realpath tree
+
+    # install |
+
+
+    # | git
+
+        # git - clone - aln
+        if [ -d '/opt/aln' ]; then
+            cd '/opt/aln' && git pull
+        else
+            git clone 'https://github.com/local-user/aln.git' '/opt/aln'
+        fi
+
+    # git |
+
+
+    # | aln
+
+        # '/opt/system/ -> /'
+        /bin/bash /opt/aln/bin/aln -s '/opt/system' -d '/'
+
+    # aln |
+
+
+    # | restart
+
+        # restart - apache2
+        service apache2 reload
+
+        # restart - sshd
+        service ssh reload
+
+    # restart |
+
+
+
+
+#
+#   %(#.0)?-
+#

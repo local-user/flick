@@ -1,0 +1,73 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version.
+VAGRANTFILE_API_VERSION = "2"
+
+# | Vagrant
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+
+    # | global
+
+        # base - box
+        config.vm.box = "ubuntu/trusty64"
+
+        # network - adapter - bridged
+        config.vm.network "public_network"
+
+        # copy - app / ssh / system
+        config.vm.provision "file", source: "../app",       destination: "/tmp/app"
+        config.vm.provision "file", source: "ssh",          destination: "/tmp/ssh"
+        config.vm.provision "file", source: "system",       destination: "/tmp/system"
+
+        # provision - shell - bash
+        config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+        config.vm.provision "shell", path: "script/provision"
+
+        # share - vagrant - disable
+        config.vm.synced_folder '.', '/vagrant', disabled: true
+
+        # ssh - agent - fowarding
+        config.ssh.forward_agent = true
+
+        # | VirtualBox
+        config.vm.provider "virtualbox" do |vb|
+
+            # VBoxManage - settings
+            vb.customize [
+                "modifyvm", :id,
+                "--memory", "512",
+            ]
+
+        end
+        # VirtualBox |
+
+    # global |
+
+
+    # | machine(s)
+
+        # | build-flick
+        config.vm.define "build-flick" do |web|
+            config.vm.hostname = "build-flick"
+            config.vm.provider :virtualbox do |vb|
+                vb.name = "build-flick"
+            end
+        end
+        # build-flick |
+
+        # | flick
+        config.vm.define "flick" do |web|
+            config.vm.hostname = "flick"
+            config.vm.provider :virtualbox do |vb|
+                vb.name = "flick"
+            end
+        end
+        # flick |
+
+    # machine(s) |
+
+
+end
+# Vagrant |
