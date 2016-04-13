@@ -1,14 +1,17 @@
 #flick
-#####a PHP header redirect
+#####a header redirect
 
 ###Overview
-A delayed header redirect written in PHP that accepts a delay in seconds and a url as $_GET arguments.
+A delayed header redirect written that accepts a delay and a url.
 
 ###Argument(s)
 - delay (seconds)
--- eg: 5
+-- eg: ?delay=5
 - url
--- eg: http://www.google.com.au/
+-- eg: ?url=http://www.example.com/
 
 ###Usage
-Symlink repository webroot to web server document root.
+- '$ cd vagrant/'
+- '$ mkdir ssh'
+- '$ vagrant up flick'
+- '# http://flick/'
