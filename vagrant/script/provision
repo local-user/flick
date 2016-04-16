@@ -14,7 +14,7 @@
     if [ -d '/tmp/app' ]; then
 
         # remove existing
-        rm -r -v '/var/www'
+        rm -rf '/var/www'
 
         # move
         mv -v '/tmp/app' '/var/www'
@@ -28,29 +28,11 @@
     # app |
 
 
-    # | ssh
-    if [ -d '/tmp/ssh' ]; then
-
-        # mv
-        mv -v '/tmp/ssh/'* '/root/.ssh'
-
-        # ownership
-        chown -R root:root '/root/.ssh'
-                      find '/root/.ssh' -type f -exec chmod 600 {} \;
-                      find '/root/.ssh' -type d -exec chmod 700 {} \;
-
-        # rm
-        rm -vrf '/tmp/ssh'
-
-    fi
-    # ssh |
-
-
     # | system
     if [ -d '/tmp/system' ]; then
 
         # remove existing
-        [ -d '/opt/system' ] && rm -vrf '/opt/system'
+        [ -d '/opt/system' ] && rm -rf '/opt/system'
 
         # move
         mv -v '/tmp/system' '/opt/system'
@@ -65,7 +47,7 @@
         aptitude update
 
         # apt - upgrade
-#        aptitude upgrade -q -y
+        aptitude upgrade -q -y
 
         # apt - install - lamp / git / realpath / tree
         aptitude install -q -y apache2 mysql-server php5-mysql php5 libapache2-mod-php5 php5-mcrypt git realpath tree
